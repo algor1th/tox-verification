@@ -1,0 +1,66 @@
+free c.
+
+fun pk/1.
+fun sk/1.
+fun box/4.
+
+reduc unbox(box(m, pk(a), sk(b), nonce), sk(a), pk(b), nonce) -> m.
+
+const id_0x83, id_0x84, is_stored_0, is_stored_1.
+const sucess.
+const zero.
+
+let dhtannounce(x) =
+  in(c, ann);
+  let (=id_0x83, nonce, pkey, payload) = ann in
+  let (pingid, pksearch, pkres, data) = unbox(payload, sk(x), pkey, nonce) in
+  if pingid = zero then
+    out(c, (id_0x84, data, nonce, box((is_stored_1, zero, pksearch), pkres, sk(x), nonce)))
+  else
+    new pksearch_random;
+    out(c, (id_0x84, data, nonce, box((is_stored_0, pingid, pksearch_random), pkres, sk(x), nonce))).
+
+let announcenode(self, node) = (* self .. identity of node; node .. identity of peer *)
+  new nonce;
+  new pingid;
+  new data;
+  new pksearch;
+  new identity;
+  out(c, (id_0x83, nonce, pk(self), box((pingid, pksearch, pk(self), data), pk(node), sk(self), nonce)));
+  in(c, res);
+  let (=id_0x84, =data, =nonce, payload) = res in
+  let(=is_stored_0, =pingid, =pksearch) = unbox(payload, sk(self), pk(node), nonce) in
+  out(c, sucess).
+
+let searchnode(self, node, search) =
+  new nonce;
+  new data;
+  new identity;
+  out(c, (id_0x83, nonce, pk(identity),box((zero, pk(search), zero, data), pk(node), pk(identity), nonce)));
+  in(c, res);
+  let (=id_0x84, =data, =nonce, payload) = res in
+  let(=is_stored_1, pingid, =pk(search)) = unbox(payload, sk(identity), pk(node), nonce) in
+  out(c, sucess).
+
+free n, x, x2, x3[private].
+
+let announceA = dhtannounce(n) | announcenode(x,n).
+let announceB = dhtannounce(n) | announcenode(x2,n).
+let searchA = dhtannounce(n) | searchnode(x, n, x2).
+let searchB = dhtannounce(n) | searchnode(x, n, x3).
+let searchC = dhtannounce(n) | searchnode(x2, n, x3).
+let annouceTwice = new node; (dhtannounce(n) | announcenode(node, n)|dhtannounce(n) | announcenode(node, n)).
+let twoAnnouncements = new node;new node2;(dhtannounce(n) | announcenode(node, n) |dhtannounce(n) | announcenode(node2, n)).
+let searchTwice = new node;
+  ((dhtannounce(n)| searchnode(node, n, x2))|
+  (dhtannounce(n)| searchnode(node, n, x2))).
+let twoSearches = new node; new node2;
+((dhtannounce(n)| searchnode(node, n, x2))|
+(dhtannounce(n)| searchnode(node2, n, x2))).
+
+query trace_equiv(announceA,announceB). // strong secrecy
+query trace_equiv(announceA,searchA). // claimed in documentation
+query trace_equiv(searchA,searchB). // strong secrecy
+query trace_equiv(searchA,searchC). // strong secrecy
+query trace_equiv(annouceTwice,twoAnnouncements). // unlinkability
+query trace_equiv(searchTwice,twoSearches). // unlinkability

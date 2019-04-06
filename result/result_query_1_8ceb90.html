@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>DeepSec: DEciding EQuivalence Properties in SECcurity protocols</title>
+ <link rel="stylesheet" type="text/css" href="/home/lenny/deepsec/Style/style.css">
+<!-- Stylesheet deepsec -->
+  <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+ <script src="/home/lenny/deepsec/Scripts/scripts.js"></script>
+<!-- Script deepsec -->
+  <script>
+    var height_attack = '';
+    var width_attack = '';
+
+    function update_size(id) {
+      document.getElementById('expansed3e0e' + id).style.height = height_attack+'px';
+      document.getElementById('expansed3e0e' + id).style.width = width_attack+'px';
+    }
+  </script>
+</head>
+
+<body>
+  <div id="main">
+
+    <!-- The content -->
+
+
+    <div id="content">
+
+      <div id="content-header">
+
+        <div id="title">
+          <div id="title-main">Result of the last execution of DeepSec</div>
+        </div>
+
+      </div>
+
+      <div id="content-text">
+
+        <div class="title-paragraph"> Summary of the input file</div>
+
+        <p> Selected semantics : Private (Internal communication only allowed on private channels)</p>
+
+        <p> Constructor function symbols : \(\{ skey/1, senc/3, ip/1, e\_sk/1, e\_pk/1, box/3, sk/1, pk/1 \}\)</p>
+
+        <p> Destructor function symbols : \(\{ unbox/3, sdec/2 \}\)</p>
+
+        <p> Public names : \(\{ is\_stored_{1}, is\_stored_{0}, id_{0}, id_{0}, c \}\)</p>
+
+        <p> Private names : \(\emptyset\)</p>
+
+        <p> Rewriting system : \(\left\{ \begin{array}{l} sdec(senc(x_{7},x_{8},x_{9}),x_{8}) \rightarrow x_{7}, unbox(box(x_{4},pk(x_{5}),sk(x_{6})),sk(x_{5}),pk(x_{6})) \rightarrow x_{4}, unbox(box(x_{1},e\_pk(x_{2}),sk(x_{3})),e\_sk(x_{2}),pk(x_{3})) \rightarrow x_{1} \end{array}\right\}\)</p>
+
+        <div class="title-paragraph"> Query : Trace equivalence </div>
+
+        <div class="result">Running time : 1s </div>
+        <div class="result">Result : The processes are equivalent</div>
+        <div class="input-table">
+          <div class="input-body">
+            <div class="input-row">
+              <div class="input-process-title">Process 1</div>
+              <div class="input-process-title">Process 2</div>
+            </div>
+            <div class="input-row">
+              <div class="input-process">
+          <div id="expansed1" class="expansedTable">
+            <div class="expansedBody">
+              <div class="expansedRow"><div class="expansedLine">{1}</div><div class="expansedProcess"><div style="margin-left:15px">new n<sub>2</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{2}</div><div class="expansedProcess"><div style="margin-left:15px">new x<sub>2</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{3}</div><div class="expansedProcess"><div style="margin-left:15px">new x2<sub>2</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{4}</div><div class="expansedProcess"><div style="margin-left:15px">(&nbsp; !<sup>2</sup></div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{5}</div><div class="expansedProcess"><div style="margin-left:30px">new nonce<sub>4</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{6}</div><div class="expansedProcess"><div style="margin-left:30px">new pingid<sub>4</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{7}</div><div class="expansedProcess"><div style="margin-left:30px">new data<sub>4</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{8}</div><div class="expansedProcess"><div style="margin-left:30px">new pksearch<sub>4</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{9}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,&#10216;id_0x83,nonce<sub>4</sub>,pk(x<sub>2</sub>),box(&#10216;pingid<sub>4</sub>,pksearch<sub>4</sub>,pk(x<sub>2</sub>),data<sub>4</sub>&#10217;,pk(n<sub>2</sub>),sk(x<sub>2</sub>))&#10217;);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{10}</div><div class="expansedProcess"><div style="margin-left:30px">in(c,res<sub>2</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{11}</div><div class="expansedProcess"><div style="margin-left:15px">)&nbsp;|&nbsp;(</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{12}</div><div class="expansedProcess"><div style="margin-left:30px">new nonce<sub>3</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{13}</div><div class="expansedProcess"><div style="margin-left:30px">new pingid<sub>3</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{14}</div><div class="expansedProcess"><div style="margin-left:30px">new data<sub>3</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{15}</div><div class="expansedProcess"><div style="margin-left:30px">new pksearch<sub>3</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{16}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,&#10216;id_0x83,nonce<sub>3</sub>,pk(x2<sub>2</sub>),box(&#10216;pingid<sub>3</sub>,pksearch<sub>3</sub>,pk(x2<sub>2</sub>),data<sub>3</sub>&#10217;,pk(n<sub>2</sub>),sk(x2<sub>2</sub>))&#10217;);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{17}</div><div class="expansedProcess"><div style="margin-left:30px">in(c,res<sub>2</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{18}</div><div class="expansedProcess"><div style="margin-left:15px">)&nbsp;|&nbsp;(</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{19}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,pk(n<sub>2</sub>));</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{20}</div><div class="expansedProcess"><div style="margin-left:30px">in(c,ann<sub>1</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{21}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;id_0x83,nonce<sub>2</sub>,pkey<sub>1</sub>,payload<sub>1</sub>&#10217; &#61; ann<sub>1</sub> in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{22}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;pingid<sub>2</sub>,pksearch<sub>2</sub>,pkres<sub>2</sub>,data<sub>2</sub>&#10217; &#61; unbox(payload<sub>1</sub>,pkey<sub>1</sub>,sk(n<sub>2</sub>)) in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{23}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,&#10216;id_0x84,data<sub>2</sub>,nonce<sub>2</sub>,&#10216;is_stored_0,pingid<sub>2</sub>&#10217;&#10217;);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{24}</div><div class="expansedProcess"><div style="margin-left:30px">in(c,search<sub>1</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{25}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;id_0x83,nonce2<sub>2</sub>,pkey2<sub>2</sub>,payload2<sub>1</sub>&#10217; &#61; search<sub>1</sub> in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{26}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;pingid2<sub>2</sub>,pksearch2<sub>2</sub>,pkres2<sub>2</sub>,data2<sub>2</sub>&#10217; &#61; payload2<sub>1</sub> in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{27}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,&#10216;id_0x84,data2<sub>2</sub>,nonce<sub>2</sub>,&#10216;is_stored_1,pkres<sub>2</sub>&#10217;&#10217;);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{28}</div><div class="expansedProcess"><div style="margin-left:30px">in(c,res<sub>2</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{29}</div><div class="expansedProcess"><div style="margin-left:15px">)</div></div></div>
+            </div>
+          </div>
+              </div>
+              <div class="input-process"><div id="process-2">
+          <div id="expansed2" class="expansedTable">
+            <div class="expansedBody">
+              <div class="expansedRow"><div class="expansedLine">{1}</div><div class="expansedProcess"><div style="margin-left:15px">new n<sub>1</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{2}</div><div class="expansedProcess"><div style="margin-left:15px">new x<sub>1</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{3}</div><div class="expansedProcess"><div style="margin-left:15px">new x2<sub>1</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{4}</div><div class="expansedProcess"><div style="margin-left:15px">(&nbsp; !<sup>2</sup></div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{5}</div><div class="expansedProcess"><div style="margin-left:30px">new nonce<sub>2</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{6}</div><div class="expansedProcess"><div style="margin-left:30px">new pingid<sub>2</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{7}</div><div class="expansedProcess"><div style="margin-left:30px">new data<sub>2</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{8}</div><div class="expansedProcess"><div style="margin-left:30px">new pksearch<sub>2</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{9}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,&#10216;id_0x83,nonce<sub>2</sub>,pk(x2<sub>1</sub>),box(&#10216;pingid<sub>2</sub>,pksearch<sub>2</sub>,pk(x2<sub>1</sub>),data<sub>2</sub>&#10217;,pk(n<sub>1</sub>),sk(x2<sub>1</sub>))&#10217;);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{10}</div><div class="expansedProcess"><div style="margin-left:30px">in(c,res<sub>1</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{11}</div><div class="expansedProcess"><div style="margin-left:15px">)&nbsp;|&nbsp;(</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{12}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,pk(n<sub>1</sub>));</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{13}</div><div class="expansedProcess"><div style="margin-left:30px">in(c,ann<sub>2</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{14}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;id_0x83,nonce<sub>1</sub>,pkey<sub>2</sub>,payload<sub>2</sub>&#10217; &#61; ann<sub>2</sub> in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{15}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;pingid<sub>1</sub>,pksearch<sub>1</sub>,pkres<sub>1</sub>,data<sub>1</sub>&#10217; &#61; unbox(payload<sub>2</sub>,pkey<sub>2</sub>,sk(n<sub>1</sub>)) in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{16}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,&#10216;id_0x84,data<sub>1</sub>,nonce<sub>1</sub>,&#10216;is_stored_0,pingid<sub>1</sub>&#10217;&#10217;);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{17}</div><div class="expansedProcess"><div style="margin-left:30px">in(c,search<sub>2</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{18}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;id_0x83,nonce2<sub>1</sub>,pkey2<sub>1</sub>,payload2<sub>2</sub>&#10217; &#61; search<sub>2</sub> in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{19}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;pingid2<sub>1</sub>,pksearch2<sub>1</sub>,pkres2<sub>1</sub>,data2<sub>1</sub>&#10217; &#61; payload2<sub>2</sub> in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{20}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,&#10216;id_0x84,data2<sub>1</sub>,nonce<sub>1</sub>,&#10216;is_stored_1,pkres<sub>1</sub>&#10217;&#10217;);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{21}</div><div class="expansedProcess"><div style="margin-left:30px">in(c,res<sub>1</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{22}</div><div class="expansedProcess"><div style="margin-left:15px">)&nbsp;|&nbsp;(</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{23}</div><div class="expansedProcess"><div style="margin-left:30px">new nonce<sub>1</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{24}</div><div class="expansedProcess"><div style="margin-left:30px">new pingid<sub>1</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{25}</div><div class="expansedProcess"><div style="margin-left:30px">new data<sub>1</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{26}</div><div class="expansedProcess"><div style="margin-left:30px">new pksearch<sub>1</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{27}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,&#10216;id_0x83,nonce<sub>1</sub>,pk(x<sub>1</sub>),box(&#10216;pingid<sub>1</sub>,pksearch<sub>1</sub>,pk(x<sub>1</sub>),data<sub>1</sub>&#10217;,pk(n<sub>1</sub>),sk(x<sub>1</sub>))&#10217;);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{28}</div><div class="expansedProcess"><div style="margin-left:30px">in(c,res<sub>1</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{29}</div><div class="expansedProcess"><div style="margin-left:15px">)</div></div></div>
+            </div>
+          </div>
+              </div></div>
+            </div>
+          </div>
+        </div>
+        <div class="small-separation"> </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

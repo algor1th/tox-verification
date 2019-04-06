@@ -1,0 +1,133 @@
+free c.
+
+free i, r, o [private].
+
+free A, B, C [private].
+free dhtnode[private].
+
+free id_0x80, id_0x81, id_0x82, id_0x83, id_0x84, id_0x8c, id_0x8d, id_0x8e, is_stored_0, is_stored_1.
+
+fun pk/1.
+fun sk/1.
+fun box/3.
+fun e_pk/1.
+fun e_sk/1.
+fun ip/1.
+fun senc/3.
+fun skey/1.
+
+reduc sdec(senc(m, k, n), k) = m.
+reduc unbox(box(m, pk(a), sk(b)), sk(a), pk(b)) -> m.
+
+let send_onion(data, I, R) =
+  new nonce;
+  new k1;
+  new k2;
+  let me = (
+    id_0x80,
+    nonce,
+    e_pk(I),
+    box(
+    (
+      ip(B),
+      pk(k1),
+      box(
+        (
+          ip(C),
+          pk(k2),
+          box(
+            (
+              data
+             ),
+            pk(C),
+            sk(k2)
+          )
+        ),
+        pk(B),
+        sk(k1)
+        )
+      ),
+    pk(A),
+    e_sk(I)
+  ))
+  in out(c, me).
+
+let startNode(x) =
+  in(c, me);
+  let (=id_0x80, nonce, epk, cy) = me in
+  let (ipnext, pk1, inner) = unbox(cy, sk(x), epk) in
+  out(c, (id_0x81, nonce, pk1, inner));
+  in(c, resp);
+  let (=id_0x8e, =nonce, data) = resp in
+  out(c, data).
+
+let middleNode(x) =
+  in(c, re);
+  let (=id_0x81, nonce, pk1, cy) = re in
+  let (ipnext, pk2, inner) = unbox(cy, sk(x), pk1) in
+  out(c, (id_0x82, nonce, inner));
+  in(c, resp);
+  let (=id_0x8d, =nonce, data) = resp in
+  out(c, (id_0x8e, nonce, data)).
+
+let endNode(x) =
+  in(c, re);
+  let (=id_0x82, nonce, pk1, cy) = re in
+  let (data) = unbox(cy, sk(x), pk1) in
+  out(c, (data, nonce));
+  in(c, resp);
+  let (=id_0x8c, =nonce, rdata) = resp in
+  out(c, (id_0x8d, nonce, rdata)).
+
+
+let onionNode(x) =
+  startNode(x) | middleNode(x) | endNode(x).
+let respondant (R)=
+  in(c, me);
+  let (data, nonce) = me in
+  let re = (id_0x8c, nonce, data)
+  in out(c, re).
+
+let dhtannounce(x) =
+  out(c, pk(x));
+  in(c, ann);
+  let (=id_0x83, nonce, pkey, payload) = ann in
+  let (pingid, pksearch, pkres, data) = payload in
+  out(c, (id_0x84, data, nonce,(is_stored_0, pingid)));
+  in(c, search);
+  let (=id_0x83, nonce2, pkey2, payload2) = search in
+  let (pingid2, pksearch2, pkres2, data2) = payload2 in
+  out(c, (id_0x84, data2, nonce,(is_stored_1, pkres))).
+
+
+let init =
+// commented out for performance reasons
+/* out(c, e_pk(i));
+out(c, e_pk(r)); */
+dhtannounce(i) | dhtannounce(r) | dhtannounce(o) | dhtannounce(dhtnode).
+/* out(c, pk(A));
+out(c, pk(B));
+out(c, pk(C)). */
+
+
+let initiator(I, R) =
+  new nonce;
+  // announce ourselves
+  new pingid;
+  new data;
+  new pksearch;
+  (send_onion((ip(R), (id_0x83, nonce, pk(I),(pingid, pksearch, e_pk(I), data))), I, R) |
+  in(c, res);
+  let (=id_0x84, =data, =nonce, payload) = res in
+  new nonce2;
+  send_onion((ip(R),(id_0x83, nonce2, e_pk(I))), I, R)).
+// nodes only do one job because of performance
+let onion(a, b) = (onionNode(A) | onionNode(B)| onionNode(C))
+ | (initiator(a, b) | respondant(b)).
+let prA = init | onion(i, r).
+let prB = init | onion(i, o).
+
+let prC = init | onion(i, r).
+let prD = init | onion(o, r).
+query trace_equiv(prA, prB).
+query trace_equiv(prC, prD).

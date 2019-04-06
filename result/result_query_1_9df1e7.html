@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>DeepSec: DEciding EQuivalence Properties in SECcurity protocols</title>
+ <link rel="stylesheet" type="text/css" href="/home/lenny/deepsec/Style/style.css">
+<!-- Stylesheet deepsec -->
+  <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+ <script src="/home/lenny/deepsec/Scripts/scripts.js"></script>
+<!-- Script deepsec -->
+  <script>
+    var height_attack = '';
+    var width_attack = '';
+
+    function update_size(id) {
+      document.getElementById('expansed3e0e' + id).style.height = height_attack+'px';
+      document.getElementById('expansed3e0e' + id).style.width = width_attack+'px';
+    }
+  </script>
+</head>
+
+<body>
+  <div id="main">
+
+    <!-- The content -->
+
+
+    <div id="content">
+
+      <div id="content-header">
+
+        <div id="title">
+          <div id="title-main">Result of the last execution of DeepSec</div>
+        </div>
+
+      </div>
+
+      <div id="content-text">
+
+        <div class="title-paragraph"> Summary of the input file</div>
+
+        <p> Selected semantics : Private (Internal communication only allowed on private channels)</p>
+
+        <p> Constructor function symbols : \(\{ senc/3, ip/1, e\_sk/1 [\color{red}{private}], e\_pk/1, box/3, sk/1 [\color{red}{private}], pk/1 \}\)</p>
+
+        <p> Destructor function symbols : \(\{ unbox/3, sdec/2 \}\)</p>
+
+        <p> Public names : \(\{ C, B, A, c \}\)</p>
+
+        <p> Private names : \(\{ m, o, r, i \}\)</p>
+
+        <p> Rewriting system : \(\left\{ \begin{array}{l} sdec(senc(x_{4},x_{5},x_{6}),x_{5}) \rightarrow x_{4}, unbox(box(x_{1},pk(x_{2}),sk(x_{3})),sk(x_{2}),pk(x_{3})) \rightarrow x_{1} \end{array}\right\}\)</p>
+
+        <div class="title-paragraph"> Query : Trace equivalence </div>
+
+        <div class="result">Running time : 2s </div>
+        <div class="result">Result : The processes are equivalent</div>
+        <div class="input-table">
+          <div class="input-body">
+            <div class="input-row">
+              <div class="input-process-title">Process 1</div>
+              <div class="input-process-title">Process 2</div>
+            </div>
+            <div class="input-row">
+              <div class="input-process">
+          <div id="expansed1" class="expansedTable">
+            <div class="expansedBody">
+              <div class="expansedRow"><div class="expansedLine">{1}</div><div class="expansedProcess"><div style="margin-left:15px">(</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{2}</div><div class="expansedProcess"><div style="margin-left:30px">in(c,me<sub>3</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{3}</div><div class="expansedProcess"><div style="margin-left:30px">new k1<sub>2</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{4}</div><div class="expansedProcess"><div style="margin-left:30px">new k2<sub>2</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{5}</div><div class="expansedProcess"><div style="margin-left:30px">new k3<sub>1</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{6}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;nonce<sub>7</sub>,cy<sub>2</sub>&#10217; &#61; me<sub>3</sub> in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{7}</div><div class="expansedProcess"><div style="margin-left:30px">let re<sub>2</sub> &#61; &#10216;nonce<sub>7</sub>,e_pk(i),box(&#10216;ip(B),pk(k1<sub>2</sub>),box(&#10216;ip(C),pk(k2<sub>2</sub>),box(ip(r),pk(C),sk(k2<sub>2</sub>))&#10217;,pk(B),sk(k1<sub>2</sub>))&#10217;,pk(A),e_sk(i))&#10217; in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{8}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,re<sub>2</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{9}</div><div class="expansedProcess"><div style="margin-left:15px">)&nbsp;|&nbsp;(</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{10}</div><div class="expansedProcess"><div style="margin-left:30px">new nonce<sub>1</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{11}</div><div class="expansedProcess"><div style="margin-left:30px">new data<sub>1</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{12}</div><div class="expansedProcess"><div style="margin-left:30px">new k1<sub>1</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{13}</div><div class="expansedProcess"><div style="margin-left:30px">new k2<sub>1</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{14}</div><div class="expansedProcess"><div style="margin-left:30px">let me<sub>2</sub> &#61; &#10216;nonce<sub>1</sub>,e_pk(i),box(&#10216;ip(B),pk(k1<sub>1</sub>),box(&#10216;ip(C),pk(k2<sub>1</sub>),box(&#10216;ip(r),data<sub>1</sub>&#10217;,pk(C),sk(k2<sub>1</sub>))&#10217;,pk(B),sk(k1<sub>1</sub>))&#10217;,pk(A),e_sk(i))&#10217; in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{15}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,me<sub>2</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{16}</div><div class="expansedProcess"><div style="margin-left:15px">)&nbsp;|&nbsp;(</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{17}</div><div class="expansedProcess"><div style="margin-left:30px">in(c,me<sub>4</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{18}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;nonce<sub>6</sub>,epk<sub>1</sub>,cy<sub>3</sub>&#10217; &#61; me<sub>4</sub> in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{19}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;next<sub>6</sub>,pk_k<sub>6</sub>,a<sub>6</sub>&#10217; &#61; unbox(cy<sub>3</sub>,sk(C),epk<sub>1</sub>) in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{20}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,a<sub>6</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{21}</div><div class="expansedProcess"><div style="margin-left:15px">)&nbsp;|&nbsp;(</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{22}</div><div class="expansedProcess"><div style="margin-left:30px">in(c,me<sub>5</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{23}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;nonce<sub>5</sub>,epk<sub>2</sub>,cy<sub>4</sub>&#10217; &#61; me<sub>5</sub> in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{24}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;next<sub>5</sub>,pk_k<sub>5</sub>,a<sub>5</sub>&#10217; &#61; unbox(cy<sub>4</sub>,sk(A),epk<sub>2</sub>) in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{25}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,a<sub>5</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{26}</div><div class="expansedProcess"><div style="margin-left:15px">)&nbsp;|&nbsp;(</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{27}</div><div class="expansedProcess"><div style="margin-left:30px">in(c,me<sub>6</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{28}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;nonce<sub>4</sub>,epk<sub>3</sub>,cy<sub>5</sub>&#10217; &#61; me<sub>6</sub> in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{29}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;next<sub>4</sub>,pk_k<sub>4</sub>,a<sub>4</sub>&#10217; &#61; unbox(cy<sub>5</sub>,sk(B),epk<sub>3</sub>) in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{30}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,a<sub>4</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{31}</div><div class="expansedProcess"><div style="margin-left:15px">)</div></div></div>
+            </div>
+          </div>
+              </div>
+              <div class="input-process"><div id="process-2">
+          <div id="expansed2" class="expansedTable">
+            <div class="expansedBody">
+              <div class="expansedRow"><div class="expansedLine">{1}</div><div class="expansedProcess"><div style="margin-left:15px">(</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{2}</div><div class="expansedProcess"><div style="margin-left:30px">in(c,me<sub>7</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{3}</div><div class="expansedProcess"><div style="margin-left:30px">new k1<sub>3</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{4}</div><div class="expansedProcess"><div style="margin-left:30px">new k2<sub>3</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{5}</div><div class="expansedProcess"><div style="margin-left:30px">new k3<sub>2</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{6}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;nonce<sub>8</sub>,cy<sub>1</sub>&#10217; &#61; me<sub>7</sub> in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{7}</div><div class="expansedProcess"><div style="margin-left:30px">let re<sub>1</sub> &#61; &#10216;nonce<sub>8</sub>,e_pk(i),box(&#10216;ip(B),pk(k1<sub>3</sub>),box(&#10216;ip(C),pk(k2<sub>3</sub>),box(ip(o),pk(C),sk(k2<sub>3</sub>))&#10217;,pk(B),sk(k1<sub>3</sub>))&#10217;,pk(A),e_sk(i))&#10217; in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{8}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,re<sub>1</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{9}</div><div class="expansedProcess"><div style="margin-left:15px">)&nbsp;|&nbsp;(</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{10}</div><div class="expansedProcess"><div style="margin-left:30px">new nonce<sub>2</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{11}</div><div class="expansedProcess"><div style="margin-left:30px">new data<sub>2</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{12}</div><div class="expansedProcess"><div style="margin-left:30px">new k1<sub>4</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{13}</div><div class="expansedProcess"><div style="margin-left:30px">new k2<sub>4</sub>;</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{14}</div><div class="expansedProcess"><div style="margin-left:30px">let me<sub>1</sub> &#61; &#10216;nonce<sub>2</sub>,e_pk(i),box(&#10216;ip(B),pk(k1<sub>4</sub>),box(&#10216;ip(C),pk(k2<sub>4</sub>),box(&#10216;ip(o),data<sub>2</sub>&#10217;,pk(C),sk(k2<sub>4</sub>))&#10217;,pk(B),sk(k1<sub>4</sub>))&#10217;,pk(A),e_sk(i))&#10217; in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{15}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,me<sub>1</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{16}</div><div class="expansedProcess"><div style="margin-left:15px">)&nbsp;|&nbsp;(</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{17}</div><div class="expansedProcess"><div style="margin-left:30px">in(c,me<sub>8</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{18}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;nonce<sub>3</sub>,epk<sub>4</sub>,cy<sub>6</sub>&#10217; &#61; me<sub>8</sub> in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{19}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;next<sub>3</sub>,pk_k<sub>3</sub>,a<sub>3</sub>&#10217; &#61; unbox(cy<sub>6</sub>,sk(C),epk<sub>4</sub>) in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{20}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,a<sub>3</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{21}</div><div class="expansedProcess"><div style="margin-left:15px">)&nbsp;|&nbsp;(</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{22}</div><div class="expansedProcess"><div style="margin-left:30px">in(c,me<sub>9</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{23}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;nonce<sub>2</sub>,epk<sub>5</sub>,cy<sub>7</sub>&#10217; &#61; me<sub>9</sub> in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{24}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;next<sub>2</sub>,pk_k<sub>2</sub>,a<sub>2</sub>&#10217; &#61; unbox(cy<sub>7</sub>,sk(A),epk<sub>5</sub>) in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{25}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,a<sub>2</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{26}</div><div class="expansedProcess"><div style="margin-left:15px">)&nbsp;|&nbsp;(</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{27}</div><div class="expansedProcess"><div style="margin-left:30px">in(c,me<sub>10</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{28}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;nonce<sub>1</sub>,epk<sub>6</sub>,cy<sub>8</sub>&#10217; &#61; me<sub>10</sub> in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{29}</div><div class="expansedProcess"><div style="margin-left:30px">let &#10216;next<sub>1</sub>,pk_k<sub>1</sub>,a<sub>1</sub>&#10217; &#61; unbox(cy<sub>8</sub>,sk(B),epk<sub>6</sub>) in</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{30}</div><div class="expansedProcess"><div style="margin-left:30px">out(c,a<sub>1</sub>);</div></div></div>
+              <div class="expansedRow"><div class="expansedLine">{31}</div><div class="expansedProcess"><div style="margin-left:15px">)</div></div></div>
+            </div>
+          </div>
+              </div></div>
+            </div>
+          </div>
+        </div>
+        <div class="small-separation"> </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
